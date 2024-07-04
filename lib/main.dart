@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vrportfolio/pages/getStarted.dart';
-import 'package:vrportfolio/pages/profile.dart';
+import 'package:vrportfolio/pages/page1.dart';
+import 'package:vrportfolio/pages/page2.dart';
+import 'package:vrportfolio/pages/page3.dart';
+
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -24,42 +26,97 @@ class _MyAppState extends State<MyApp> {
   bool isDark = false;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: isDark ? darkTheme : lightTheme,
-      home: HomePage(),
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
 
-ThemeData lightTheme = ThemeData(
-  primarySwatch: Colors.blue,
-  brightness: Brightness.light,
-  scaffoldBackgroundColor: Colors.white,
-  appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.white,
-    elevation: 0,
-    iconTheme: IconThemeData(color: Colors.black),
-  ),
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    backgroundColor: Colors.white,
-    selectedItemColor: Colors.black,
-    unselectedItemColor: Color(0xFFb1b1b2),
-  ),
-);
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
-ThemeData darkTheme = ThemeData(
-  primarySwatch: Colors.blue,
-  brightness: Brightness.dark,
-  scaffoldBackgroundColor: Colors.black,
-  appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.black,
-    elevation: 0,
-    iconTheme: IconThemeData(color: Colors.white),
-  ),
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    backgroundColor: Colors.black,
-    selectedItemColor: Colors.white,
-    unselectedItemColor: Color(0xFFb1b1b2),
-  ),
-);
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+  int pageIndex = 0;
+
+  var pages = [
+    const Page1(),
+    const Page2(),
+    const Page3(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    var standardHeight = MediaQuery.of(context).size.height;
+    var standardWidth = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      body: Stack(
+          children: [
+            Stack(
+                children: [
+                  pages[pageIndex],
+                ]
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: standardHeight * 0.08,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(standardHeight * 0.02),
+                    topRight: Radius.circular(standardHeight * 0.02),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      enableFeedback: false,
+                      onPressed: (){
+                        setState(() {
+                          pageIndex = 0;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.person,
+                        color: pageIndex == 0 ? Colors.black : Color(0xFFb1b1b2),
+                      ),
+                    ),
+                    IconButton(
+                      enableFeedback: false,
+                      onPressed: (){
+                        setState(() {
+                          pageIndex = 1;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.wallet,
+                        color: pageIndex == 1 ? Colors.black : Color(0xFFb1b1b2),
+                      ),
+                    ),
+                    IconButton(
+                      enableFeedback: false,
+                      onPressed: (){
+                        setState(() {
+                          pageIndex = 2;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.menu,
+                        color: pageIndex == 2 ? Colors.black : Color(0xFFb1b1b2),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ]
+      ),
+    );
+  }
+}
