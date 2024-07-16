@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "766573291475",
+    "project_id": "vr-portfolio-root",
+    "storage_bucket": "vr-portfolio-root.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766573291475:android:2656238567d6afea523126",
+        "android_client_info": {
+          "package_name": "com.voidroot.portfolio.vrportfolio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhGjS4J_6SKGupH6mTUg7dsmA3ldSyHWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
