@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:vrportfolio/pages/views/android.dart';
 import 'package:vrportfolio/pages/views/web.dart';
@@ -12,6 +13,13 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   bool isDark = false;
+
+  @override
+  void initState(){
+    super.initState();
+    var appearanceMode = SchedulerBinding.instance.platformDispatcher.platformBrightness;
+    isDark = appearanceMode == Brightness.dark;
+  }
 
   void toggleTheme(bool value) {
     setState(() {

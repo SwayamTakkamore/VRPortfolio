@@ -1,12 +1,13 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
-import 'package:vrportfolio/pages/androidPages/page1.dart';
-import 'package:vrportfolio/pages/androidPages/page2.dart';
-import 'package:vrportfolio/pages/androidPages/page3.dart';
+import 'package:vrportfolio/pages/androidPages/Page1/page1.dart';
+import 'package:vrportfolio/pages/androidPages/Page2/page2.dart';
+import 'package:vrportfolio/pages/androidPages/Page3/page3.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:vrportfolio/firebase_options.dart';
 
 class AndroidPage extends StatefulWidget {
+
   final Function(bool) toggleTheme;
   final bool isDark;
 

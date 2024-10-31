@@ -15,6 +15,8 @@ dependencies:
   firebase_core: ^3.2.0
   cloud_firestore: ^5.1.0
   intl: ^0.19.0
+  photo_view: ^0.15.0
+  age_calculator: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +32,7 @@ flutter:
     - assets/pfp/
     - assets/svg/feather/
     - assets/svg/raw/
+    - assets/certificates/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
