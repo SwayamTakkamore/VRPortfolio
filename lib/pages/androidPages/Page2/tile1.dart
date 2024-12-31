@@ -15,6 +15,16 @@ class tile1{
 
     details.add(
       tile1(
+        certificatepath: 'assets/certificates/IMG_20241030_110216.jpg',
+      ),
+    );
+    details.add(
+      tile1(
+        certificatepath: 'assets/certificates/IMG_20241020_070601 - Copy (2).jpg',
+      ),
+    );
+    details.add(
+      tile1(
         certificatepath: 'assets/certificates/python basic certificate.jpg',
       ),
     );

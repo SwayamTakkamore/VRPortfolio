@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:age_calculator/age_calculator.dart';
 import '../../mainpage.dart';
 import 'expbar1.dart';
+import 'rewbar1.dart';
 
 class Page1 extends StatefulWidget {
   final Function(bool) toggleTheme;
@@ -27,6 +28,7 @@ class _Page1State extends State<Page1> {
   DateDuration age = AgeCalculator.age(DateTime(2005, 8, 26));
 
   List<expbar1> expList = [];
+  List<rewbar1> rewList = [];
 
   @override
   void initState() {
@@ -71,6 +73,7 @@ class _Page1State extends State<Page1> {
 
   void getDetails(){
     expList = expbar1.getexp1();
+    rewList = rewbar1.getrew1();
   }
 
   @override
@@ -469,6 +472,130 @@ class _Page1State extends State<Page1> {
                                         child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: const Line()
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: standardHeight * 0.04),
+                    Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: standardWidth * 0.11),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "Awards and Rewards",
+                              style: TextStyle(
+                                fontSize: standardHeight * 0.022,
+                                fontWeight: FontWeight.w600,
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: standardHeight * 0.04),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: SingleChildScrollView(
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: ListView.separated(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (BuildContext context, int index) {
+                                      return Row(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(left: standardWidth * 0.20,),
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      const Dot(),
+                                                      SizedBox(width: standardWidth * 0.1),
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (BuildContext context) {
+                                                              return Dialog(
+                                                                child: Column(
+                                                                  children: [
+
+                                                                    Stack(
+                                                                      children: [
+                                                                        ClipRRect(
+                                                                          borderRadius: BorderRadius.circular(standardHeight * 0.02),
+                                                                          child: Image.asset(
+                                                                            rewList[index].image,
+                                                                            height: standardHeight * 0.5,
+                                                                            width: standardHeight * 0.5,
+                                                                            fit: BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            }
+                                                          );
+                                                        },
+                                                        child: Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: [
+                                                            Text(
+                                                              rewList[index].event_name,
+                                                              style: const TextStyle(
+                                                                fontWeight: FontWeight.w600,
+                                                                color: Colors.black,
+                                                              )
+                                                            ),
+                                                            Text(
+                                                              rewList[index].prize,
+                                                              style: const TextStyle(
+                                                                fontWeight: FontWeight.w500,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              rewList[index].event_details,
+                                                              style: const TextStyle(
+                                                                color: Color(0xff808080),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+
+                                    itemCount: rewList.length,
+
+                                    separatorBuilder: (BuildContext context, int index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.only(left: 79),
+                                        child: Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: const Line()
                                         ),
                                       );
                                     },
